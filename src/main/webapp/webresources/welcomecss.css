@@ -1,0 +1,58 @@
+body {
+    background-color: antiquewhite;
+    font-family: "Calibri", sans-serif;
+
+}
+
+legend {
+    font-size: 20pt;
+    font-family: "Calibri", sans-serif;
+    text-align: left;
+    font-weight: bolder;
+
+}
+
+.cartItem {
+    padding: 5px 10px;
+    background-color: slategray;
+    color: orange;
+    border-radius: 12px;
+    font-size: 12pt;
+    font-family: "Calibri", sans-serif;
+}
+
+.register {
+    pading: 8px 12px;
+    background: slategray;
+    color: orange;
+    font-family: "Calibri", sans-serif;
+}
+
+#checkout {
+    padding: 10px 40px;
+    background-color: slategray;
+    color: orange;
+    border-radius: 12px;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: "Calibri", sans-serif;
+}
+
+fieldset {
+    font-family: "Calibri", sans-serif;
+    border: ridge;
+    border-width: 8px;
+    border-color: orange;
+    background-color: silver;
+}
+
+label {
+    display: inline-block;
+    width: 250px;
+    font-family: "Calibri", sans-serif;
+
+}
+
+h1, h3 {
+    font-family: "Calibri", sans-serif;
+}

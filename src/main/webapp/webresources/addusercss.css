@@ -1,0 +1,22 @@
+body{
+    font-family: "Calibri", sans-serif;
+    background-color: antiquewhite;
+}
+th{
+    text-align: left;
+    font-family: "Calibri", sans-serif;
+
+
+}
+td{
+    padding-left: 30px;
+    text-align: left;
+    font-family: "Calibri", sans-serif;
+}
+table{
+    border:ridge;
+    border-width: 8px;
+    border-color: orange;
+    background-color: silver;
+
+}
