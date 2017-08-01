@@ -12,12 +12,19 @@
     <title>Update Item</title>
 </head>
 <body>
+<h1>Update Item Form</h1>
+<a href="/">Back to homepage</a>
+<br>
+<fieldset>
+    <legend>Update Item</legend>
     <form action="update" method="post">
-        Name:<input type="text" name="itemName" value="${itemName}"><br>
-        Description:<input type="text" name="itemDescription" value="${itemDescription}"><br>
-        Price:<input type="text" name="itemPrice" value="${itemPrice}"><br>
-        Quantity:<input type="text" name="itemQuantity" value="${itemQuantity}"><br>
+        <label>Name:</label><input type="text" name="itemName" value="${itemName}" required>*<br>
+        <label>Description:</label><input type="text" name="itemDescription" value="${itemDescription}"><br>
+        <label>Price:</label><input type="text" name="itemPrice" value="${itemPrice}"required>*<br>
+        <label>Quantity:</label><input type="text" name="itemQuantity" value="${itemQuantity}"required>*<br>
+        <br>
         <input type="submit" value="Save">
     </form>
+</fieldset>
 </body>
 </html>

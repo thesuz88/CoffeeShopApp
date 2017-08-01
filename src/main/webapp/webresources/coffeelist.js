@@ -37,24 +37,24 @@ function subTotal() {
     var sum = 0;
 
     for (var i = 0; i < priceArray.length; i++) {
-        sum = sum + priceArray[i];
+        sum = (sum + priceArray[i]).toFixed(2);
     }
 
     if (itemArray[0] > 0) {
-        document.getElementsByClassName("showBlend")[0].innerHTML = (itemArray[0] + " Detroit Blend -- " + priceArray[0]);
+        document.getElementsByClassName("showBlend")[0].innerHTML = (itemArray[0] + " Detroit Blend -- " + (priceArray[0].toFixed(2)));
     }
     if (itemArray[1] > 0) {
-        document.getElementsByClassName("showCapp")[0].innerHTML = (itemArray[1] + " Cappuccino -- " + priceArray[1]);
+        document.getElementsByClassName("showCapp")[0].innerHTML = (itemArray[1] + " Cappuccino -- " + (priceArray[1].toFixed(2)));
     }
     if (itemArray[2] > 0) {
-        document.getElementsByClassName("showMacc")[0].innerHTML = (itemArray[2] + " Caramel Macchiatto -- " + priceArray[2]);
+        document.getElementsByClassName("showMacc")[0].innerHTML = (itemArray[2] + " Caramel Macchiatto -- " + (priceArray[2].toFixed(2)));
     }
     if (itemArray[3] > 0) {
-        document.getElementsByClassName("showIced")[0].innerHTML = (itemArray[3] + " Iced Coffee -- " + priceArray[3]);
+        document.getElementsByClassName("showIced")[0].innerHTML = (itemArray[3] + " Iced Coffee -- " + (priceArray[3].toFixed(2)));
     }
     if (itemArray[4] > 0) {
 
-        document.getElementsByClassName("showScone")[0].innerHTML = (itemArray[4] + "Scone -- " + priceArray[4]);
+        document.getElementsByClassName("showScone")[0].innerHTML = (itemArray[4] + " Scone -- " + (priceArray[4].toFixed(2)));
     }
 
     document.getElementsByClassName("showSubtotal")[0].innerHTML = ("Sub-total: " + sum.toFixed(2));

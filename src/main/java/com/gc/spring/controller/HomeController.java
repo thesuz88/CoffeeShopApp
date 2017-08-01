@@ -27,10 +27,8 @@ public class HomeController {
 
     @RequestMapping("/")
 
-    public ModelAndView helloWorld() {
-        return new
-                ModelAndView("welcome", "message", "Hello World");
-        //viewName = filename, modelObject = display message, modelName = variable place holder
+    public String homePage() {
+        return "welcome";
     }
 
     @RequestMapping("/register")
@@ -47,13 +45,17 @@ public class HomeController {
         return new ModelAndView("itemsadmin", "listItems", itemList);
 
     }
+    private Session getSession() {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session s = sessionFact.openSession();
+        s.beginTransaction();
+        return s;
+    }
 
     private ArrayList<ItemsEntity> displayItemList() {
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory();
-        Session selectItems = sf.openSession();
-        selectItems.beginTransaction();
+        Session selectItems = getSession();
         Criteria c = selectItems.createCriteria(ItemsEntity.class);
 
         return (ArrayList<ItemsEntity>) c.list();
@@ -61,18 +63,13 @@ public class HomeController {
 
 
     @RequestMapping("/userprofile")
-    //Model is a parameter that allows us to add stuff to our jsp
-    //@RequestParam allows us to take in data from the form -- we must assign a type and a variable name with it
     public String addNewUser(Model model, @RequestParam("firstName") String fname, @RequestParam("lastName") String lname, @RequestParam("favoriteCoffee")String favCoffee,
                              @RequestParam("address") String address, @RequestParam("city") String city, @RequestParam("state") String state,
                              @RequestParam("zip") String zip, @RequestParam("email") String email, @RequestParam("password") String password) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-
         SessionFactory sf = cfg.buildSessionFactory();
-
         Session s = sf.openSession();
-
         Transaction tx = s.beginTransaction();
 
         UsersEntity newUser = new UsersEntity();
@@ -113,10 +110,7 @@ public class HomeController {
     public String addNewItem(@RequestParam("itemName")String itemName, @RequestParam("itemDescription")String itemdescription,
                              @RequestParam("itemPrice")BigDecimal itemPrice, @RequestParam("itemQuantity")int itemQuantity){
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory();
-        Session s = sf.openSession();
-        Transaction tx = s.beginTransaction();
+        Session s = getSession();
         ItemsEntity newItem = new ItemsEntity();
 
         newItem.setItemName(itemName);
@@ -125,7 +119,7 @@ public class HomeController {
         newItem.setQuantity(itemQuantity);
 
         s.save(newItem);
-        tx.commit();
+        s.beginTransaction().commit();
         s.close();
 
         return "addnewitem";
@@ -137,10 +131,7 @@ public class HomeController {
         ItemsEntity temp = new ItemsEntity();
         temp.setItemsId(id);
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session s = sessionFact.openSession();
-        s.beginTransaction();
+        Session s = getSession();
 
         s.delete(temp); //delete the object from the list
         s.getTransaction().commit(); //delete the row from the database table
@@ -150,24 +141,29 @@ public class HomeController {
         return
                 new ModelAndView("itemsadmin","listItems",itemList);
     }
+
     private int id;
     @RequestMapping("/updateItem")
-    public String update(@RequestParam ("id")int id){
+    public String update(Model model, @RequestParam ("id")int id){
         this.id = id;
+
+        Session s = getSession();
+
+        ItemsEntity temp = (ItemsEntity) s.get(ItemsEntity.class,id);
+
+        model.addAttribute("itemName",temp.getItemName());
+        model.addAttribute("itemDescription", temp.getDescription());
+        model.addAttribute("itemPrice",temp.getPrice());
+        model.addAttribute("itemQuantity",temp.getQuantity());
 
         return "updateitem";
     }
-
-
 
     @RequestMapping("/update")
     public ModelAndView updateItem(Model model, @RequestParam("itemName")String itemName,@RequestParam("itemDescription")String itemdescription,
                                    @RequestParam("itemPrice")BigDecimal itemPrice, @RequestParam("itemQuantity")int itemQuantity){
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory();
-        Session s = sf.openSession();
-        s.beginTransaction();
+        Session s = getSession();
 
         ItemsEntity temp = (ItemsEntity) s.get(ItemsEntity.class,id);
         temp.setItemName(itemName);
@@ -179,13 +175,6 @@ public class HomeController {
         s.getTransaction().commit();
         s.close();
         ArrayList<ItemsEntity> itemList = displayItemList();
-
-        model.addAttribute("itemID",id);
-        model.addAttribute("itemName", itemName);
-        model.addAttribute("itemDescription", temp.getDescription());
-        model.addAttribute("itemPrice",temp.getPrice());
-        model.addAttribute("itemQuantity",temp.getQuantity());
-
 
         return new ModelAndView("itemsadmin","listItems",itemList);
     }

@@ -16,16 +16,14 @@
 <body>
 <h1>Thank you for registering as a customer</h1>
 <h3>Please fill out all fields to continue</h3>
-
 <p>
     <a href="/">Back to homepage</a>
-    <!--Need to make sure the form has the action to call the method taking in the parameters entered!-->
 <form name="userForm" method="post" onsubmit="return validateForm()" action="userprofile">
     <fieldset name="customerName">
         <legend>Name</legend>
-        <label>First Name:</label><input type="text" name="firstName"><span class="invalid"></span>
+        <label>First Name:</label><input name="firstName"><span class="invalid"></span>
         <br>
-        <label>Last Name:</label><input type="text" name="lastName"><span class="invalid"></span>
+        <label>Last Name:</label><input name="lastName"><span class="invalid"></span>
         <br>
         <label>Favorite Coffee</label>
         <select name="favoriteCoffee" id="favoriteCoffee">
@@ -38,16 +36,16 @@
     <fieldset name="personalInfo">
         <legend>Contact</legend>
         <label>Address:</label>
-        <input type="text" name="address"><span class="invalid"></span>
+        <input name="address"><span class="invalid"></span>
         <br>
         <label>City:</label>
-        <input type="text" name="city"><span class="invalid"></span>
+        <input name="city"><span class="invalid"></span>
         <br>
         <label>State:</label>
-        <input type="text" name="state"><span class="invalid"></span>
+        <input name="state"><span class="invalid"></span>
         <br>
         <label>Zip:</label>
-        <input type="text" name="zip"><span class="invalid"></span>
+        <input name="zip"><span class="invalid"></span>
         <br>
     </fieldset>
     <br>

@@ -15,14 +15,14 @@
 <body>
 
 <h1>Welcome to GC COFFEE!</h1>
-<div>
+
     <p>
         Register as a customer
     <form action="register">
         <button class="register">Register</button>
     </form>
     </p>
-</div>
+
 <div>
     <p>
     <h3>Please select the items you wish to order:</h3>
@@ -60,7 +60,9 @@
 </div>
 <p>
 
-<form action="itemsadmin"><button>Admin Login</button></form>
+<form action="itemsadmin">
+    <button>Admin Login</button>
+</form>
 </p>
 <script src="\webresources\coffeelist.js"></script>
 </body>

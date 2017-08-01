@@ -10,29 +10,24 @@
 <head>
     <title>Add Item</title>
 </head>
-<style>
-    body {
-        background-color: antiquewhite;
-    }
-    a {
-        font-size: smaller;
-        font-family: "Calibri", sans-serif;
 
-    }
-
-</style>
 <body>
-
-<h1>Add New Item</h1>
+<h1>Add New Item Form</h1>
 <p>
-    <a href="itemsadmin">See Item List</a>
+    <a href="/">Back to homepage</a>
+    <br>
 </p>
-<form action="addItem" method="post">
-    Name:<input type="text" name="itemName" required><br>
-    Description:<input type="text" name="itemDescription"><br>
-    Price:<input type="text" name="itemPrice" required><br>
-    Quantity:<input type="text" name="itemQuantity" required>
-    <input type="submit" value="Save" type="submit">
-</form>
+<fieldset>
+    <legend>Add Item</legend>
+    <form action="addItem" method="post">
+        <label>Name:</label><input name="itemName" required>*<br>
+        <label>Description:</label><input name="itemDescription"><br>
+        <label>Price:</label><input name="itemPrice" required>*<br>
+        <label>Quantity:</label><input name="itemQuantity" required>*<br>
+        <br>
+        <input type="submit" value="Save" type="submit">
+    </form>
+</fieldset>
+<a href="itemsadmin">See Item List</a>
 </body>
 </html>

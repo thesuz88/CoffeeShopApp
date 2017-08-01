@@ -13,6 +13,10 @@
 </head>
 <body>
 <h1>Items</h1>
+<p>
+<a href="/">Back to homepage</a>
+<br>
+</p>
 <table border="1">
     <tr>
         <th>Item ID</th>
@@ -29,21 +33,29 @@
             <td>${items.description}</td>
             <td>${items.price}</td>
             <td>${items.quantity}</td>
-            <td><a href="updateItem?id=${items.itemsId}">Edit</a> </td>
-            <td><a href="delete?id=${items.itemsId}" onclick="return areYouSure()" > Delete </a></td>
+            <td>
+               <a href="updateItem?id=${items.itemsId}">
+                    <button value="Edit Item">Edit</button>
+               </a>
+            </td>
+            <td>
+                <a href="delete?id=${items.itemsId}" onclick="areYouSure()">
+                    <button value="Delete Item">Delete</button>
+                </a>
+            </td>
         </tr>
     </c:forEach>
 </table>
 <br>
 <br>
-<a href="/getNewItem">Add New Item</a>
+<form action="getNewItem" class="button">
+    <button>Add New Item</button>
+</form>
 
 <script>
-
-    function areYouSure(){
-        confirm("Are you sure that you want to delete this item?")
+    function areYouSure() {
+        return !!confirm("Are you sure that you want to delete this item?");
     }
-
 </script>
 
 </body>

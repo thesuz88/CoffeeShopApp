@@ -16,7 +16,7 @@
 <body>
 <h2>Welcome, ${firstName}!</h2>
 <a href="/">Back to homepage</a>
-
+<br>
 <p>
     <h4>Profile Information</h4>
     <table>
