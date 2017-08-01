@@ -29,12 +29,22 @@
             <td>${items.description}</td>
             <td>${items.price}</td>
             <td>${items.quantity}</td>
-            <td><a href="delete?id=${items.itemsId}"> Delete </a></td>
+            <td><a href="updateItem?id=${items.itemsId}">Edit</a> </td>
+            <td><a href="delete?id=${items.itemsId}" onclick="return areYouSure()" > Delete </a></td>
         </tr>
     </c:forEach>
 </table>
 <br>
 <br>
 <a href="/getNewItem">Add New Item</a>
+
+<script>
+
+    function areYouSure(){
+        confirm("Are you sure that you want to delete this item?")
+    }
+
+</script>
+
 </body>
 </html>

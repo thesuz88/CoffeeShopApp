@@ -10,6 +10,17 @@
 <head>
     <title>Add Item</title>
 </head>
+<style>
+    body {
+        background-color: antiquewhite;
+    }
+    a {
+        font-size: smaller;
+        font-family: "Calibri", sans-serif;
+
+    }
+
+</style>
 <body>
 
 <h1>Add New Item</h1>

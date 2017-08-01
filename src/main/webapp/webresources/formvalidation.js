@@ -26,8 +26,8 @@ function validateForm() {
         return false;
     }
     var state = document.forms["userForm"]["state"].value;
-    if (state == "") {
-        text = "Please enter state";
+    if (state == "" || state.length > 2) {
+        text = "Please enter valid state (XX)";
         document.getElementsByClassName("invalid")[4].innerHTML = text;
         return false;
     }

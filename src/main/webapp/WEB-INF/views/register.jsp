@@ -29,10 +29,10 @@
         <br>
         <label>Favorite Coffee</label>
         <select name="favoriteCoffee" id="favoriteCoffee">
-            <option id="fav1" value="detroitBlend">Detroit Blend</option>
-            <option id="fav2" value="cappuccino">Cappuccino</option>
-            <option id="fav3" value="caramelMacchiatto">Caramel Macchiatto</option>
-            <option id="fav4" value="icedCoffee">Iced Coffee</option>
+            <option id="fav1" value="Detroit Blend">Detroit Blend</option>
+            <option id="fav2" value="Cappuccino">Cappuccino</option>
+            <option id="fav3" value="Caramel Macchiatto">Caramel Macchiatto</option>
+            <option id="fav4" value="Iced Coffee">Iced Coffee</option>
         </select>
     </fieldset>
     <fieldset name="personalInfo">
