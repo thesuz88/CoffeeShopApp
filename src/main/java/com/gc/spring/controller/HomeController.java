@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -58,7 +57,7 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/addUser")
+    @RequestMapping("/userprofile")
     //Model is a parameter that allows us to add stuff to our jsp
     //@RequestParam allows us to take in data from the form -- we must assign a type and a variable name with it
     public String addNewUser(@RequestParam("firstName") String fname, @RequestParam("lastName") String lname,
@@ -88,7 +87,7 @@ public class HomeController {
         tx.commit();
         s.close();
 
-        return "adduser";
+        return "/WEB-INF/views/userprofile.jsp";
     }
 
 }

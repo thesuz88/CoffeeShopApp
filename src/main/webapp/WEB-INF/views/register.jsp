@@ -20,7 +20,7 @@
 <p>
     <a href="/">Back to homepage</a>
     <!--Need to make sure the form has the action to call the method taking in the parameters entered!-->
-<form name="userForm" method="post" onsubmit="return validateForm()" action="/adduser">
+<form name="userForm" method="post" onsubmit="return validateForm()" action="userprofile">
     <fieldset name="customerName">
         <legend>Name</legend>
         <label>First Name:</label><input type="text" name="firstName"><span class="invalid"></span>
@@ -29,10 +29,10 @@
         <br>
         <label>Favorite Coffee</label>
         <select name="favoriteCoffee" id="favoriteCoffee">
-            <option value="detroitBlend">Detroit Blend</option>
-            <option value="cappuccino">Cappuccino</option>
-            <option value="caramelMacchiatto">Caramel Macchiatto</option>
-            <option value="icedCoffee">Iced Coffee</option>
+            <option id="fav1" value="detroitBlend">Detroit Blend</option>
+            <option id="fav2" value="cappuccino">Cappuccino</option>
+            <option id="fav3" value="caramelMacchiatto">Caramel Macchiatto</option>
+            <option id="fav4" value="icedCoffee">Iced Coffee</option>
         </select>
     </fieldset>
     <fieldset name="personalInfo">

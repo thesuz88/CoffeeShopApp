@@ -14,7 +14,7 @@
 
 </head>
 <body>
-<h2>Welcome, ${}!</h2>
+<h2>Welcome, ${firstName}!</h2>
 <a href="/">Back to homepage</a>
 
 <p>
@@ -27,6 +27,10 @@
         <tr>
             <th>Last Name:</th>
             <td>${lastName}</td>
+        </tr>
+        <tr>
+            <th>Favorite Coffee:</th>
+            <td>${favoriteCoffee}</td>
         </tr>
         <tr>
             <th>Address:</th>
