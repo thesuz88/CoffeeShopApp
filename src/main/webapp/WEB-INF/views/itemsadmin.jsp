@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1>Items</h1>
-<table>
+<table border="1">
     <tr>
         <th>Item ID</th>
         <th>Item Name</th>
@@ -29,13 +29,12 @@
             <td>${items.description}</td>
             <td>${items.price}</td>
             <td>${items.quantity}</td>
+            <td><a href="delete?id=${items.itemsId}"> Delete </a></td>
         </tr>
     </c:forEach>
 </table>
 <br>
 <br>
-<form action="WEB-INF/views/addnewitem.jsp">
-    <button>Add New Item</button>
-</form>
+<a href="/getNewItem">Add New Item</a>
 </body>
 </html>

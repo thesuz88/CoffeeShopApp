@@ -118,6 +118,29 @@ public class HomeController {
 
         return "addnewitem";
     }
+    @RequestMapping("/delete")
+    public ModelAndView deleteItem(@RequestParam("id") int id){
 
+        //temp object will store info for the object we want to delete
+        ItemsEntity temp = new ItemsEntity();
+        temp.setItemsId(id);
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+
+        Session customers = sessionFact.openSession();
+
+        customers.beginTransaction();
+
+        customers.delete(temp); //delete the object from the list
+
+        customers.getTransaction().commit(); //delete the row from the database table
+
+        ArrayList<ItemsEntity> itemList = displayItemList();
+
+        return
+                new ModelAndView("itemsadmin","listItems",itemList);
+    }
 }
 

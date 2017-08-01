@@ -16,7 +16,7 @@
 <p>
     <a href="itemsadmin">See Item List</a>
 </p>
-<form action="/addItem" method="post">
+<form action="addItem" method="post">
     Name:<input type="text" name="itemName" required><br>
     Description:<input type="text" name="itemDescription"><br>
     Price:<input type="text" name="itemPrice" required><br>
