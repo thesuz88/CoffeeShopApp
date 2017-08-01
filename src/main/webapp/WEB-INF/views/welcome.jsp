@@ -58,6 +58,9 @@
 
     </p>
 </div>
+<p>
+    <a href="/itemsadmin.jsp">Admin login</a>
+</p>
 <script src="\webresources\coffeelist.js"></script>
 </body>
 </html>
