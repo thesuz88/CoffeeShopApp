@@ -34,7 +34,7 @@
 </table>
 <br>
 <br>
-<form>
+<form action="WEB-INF/views/addnewitem.jsp">
     <button>Add New Item</button>
 </form>
 </body>

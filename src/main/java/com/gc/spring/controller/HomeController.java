@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 
@@ -88,6 +89,34 @@ public class HomeController {
         s.close();
 
         return "/WEB-INF/views/userprofile.jsp";
+    }
+
+    @RequestMapping("/getNewItem")
+    public String newItem () {
+
+        return "addnewitem";
+    }
+
+    @RequestMapping("/addItem")
+    public String addNewItem(@RequestParam("itemName")String itemName, @RequestParam("itemDescription")String itemdescription,
+                             @RequestParam("itemPrice")BigDecimal itemPrice, @RequestParam("itemQuantity")int itemQuantity){
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sf = cfg.buildSessionFactory();
+        Session s = sf.openSession();
+        Transaction tx = s.beginTransaction();
+        ItemsEntity newItem = new ItemsEntity();
+
+        newItem.setItemName(itemName);
+        newItem.setDescription(itemdescription);
+        newItem.setPrice(itemPrice);
+        newItem.setQuantity(itemQuantity);
+
+        s.save(newItem);
+        tx.commit();
+        s.close();
+
+        return "addnewitem";
     }
 
 }
