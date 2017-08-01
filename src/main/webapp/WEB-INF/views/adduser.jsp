@@ -10,11 +10,11 @@
 <head>
     <title>Add User</title>
 
-    <link type="text/css" rel="stylesheet" href="\webresources\addusercss.css">
+    <link type="text/css" rel="stylesheet" href="webresources/addusercss.css">
 
 </head>
 <body>
-<h2>Welcome, ${firstName}!</h2>
+<h2>Welcome, ${}!</h2>
 <a href="/">Back to homepage</a>
 
 <p>

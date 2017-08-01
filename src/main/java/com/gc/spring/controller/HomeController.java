@@ -37,12 +37,12 @@ public class HomeController {
         return "register";
     }
 
-    @RequestMapping("/itemadmin")
-    public ModelAndView itemAdmin() {
+    @RequestMapping("/itemsadmin")
+    public ModelAndView itemsAdmin() {
 
         ArrayList<ItemsEntity> itemList = displayItemList();
 
-        return new ModelAndView("itemadmin", "listItems", itemList);
+        return new ModelAndView("itemsadmin", "listItems", itemList);
 
     }
 
@@ -58,13 +58,14 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/adduser")
+    @RequestMapping("/addUser")
     //Model is a parameter that allows us to add stuff to our jsp
     //@RequestParam allows us to take in data from the form -- we must assign a type and a variable name with it
-    public String welcomeUser(Model model, @RequestParam("firstName") String fname, @RequestParam("lastName") String lname,
+    public String addNewUser(@RequestParam("firstName") String fname, @RequestParam("lastName") String lname,
                               @RequestParam("address") String address, @RequestParam("city") String city, @RequestParam("state") String state,
                               @RequestParam("zip") String zip, @RequestParam("email") String email, @RequestParam("password") String password) {
-        Configuration cfg = new Configuration().configure("hibernate.cfg,xml");
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
         SessionFactory sf = cfg.buildSessionFactory();
 

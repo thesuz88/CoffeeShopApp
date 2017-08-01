@@ -12,17 +12,30 @@
     <title>Items Admin</title>
 </head>
 <body>
-
+<h1>Items</h1>
 <table>
-    <c:forEach items="${listItems}" var="items">
     <tr>
-        <td>${items.getItemsId}</td>
-        <td>${items.getItemName}</td>
-        <td>${items.getDescription}</td>
-        <td>${items.getPrice}</td>
-        <td>${items.getQuantity}</td>
+        <th>Item ID</th>
+        <th>Item Name</th>
+        <th>Item Description</th>
+        <th>Item Price</th>
+        <th>Item Quantity</th>
+
     </tr>
+    <c:forEach items="${listItems}" var="items">
+        <tr>
+            <td>${items.itemsId}</td>
+            <td>${items.itemName}</td>
+            <td>${items.description}</td>
+            <td>${items.price}</td>
+            <td>${items.quantity}</td>
+        </tr>
     </c:forEach>
 </table>
+<br>
+<br>
+<form>
+    <button>Add New Item</button>
+</form>
 </body>
 </html>
