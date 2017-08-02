@@ -2,11 +2,12 @@ package com.gc.spring.controller;
 
 import com.gc.coffeedata.ItemsEntity;
 import com.gc.coffeedata.UsersEntity;
+import com.gc.spring.Encryption.PasswordMD5Encrypt;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cache.ReadWriteCache;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,11 +26,44 @@ import java.util.ArrayList;
 @Controller
 public class HomeController {
 
+    private int id;
+
     @RequestMapping("/")
 
     public String homePage() {
         return "welcome";
     }
+
+    @RequestMapping("/login")
+    public String loginPage(){return "login";}
+
+    @RequestMapping("/loginUser")
+    public ModelAndView userLogin(@RequestParam("enteredEmail")String email, @RequestParam("enteredPassword")String password){
+
+        Session selectUsers = getSession();
+        Criteria c = selectUsers.createCriteria(UsersEntity.class);
+
+        ArrayList<UsersEntity> userList = (ArrayList<UsersEntity>)c.list();
+
+        for(int i = 0; i < userList.size(); i++){
+            UsersEntity validateUser = userList.get(i);
+            String verUser = validateUser.getEmail();
+            String verPass = validateUser.getPassword();
+            if(verUser.equalsIgnoreCase(email)){
+                if(verPass.equals(PasswordMD5Encrypt.PasswordMD5Encrypt(password))){
+                    return new ModelAndView("userprofile","success","Welcome");
+                }else{
+                    String alert = "Invalid password";
+                    return new ModelAndView("login", "invalid", alert);
+                }
+            }else{
+                String alert = "Invalid user name";
+                return new ModelAndView("login","invalid",alert);
+            }
+        }
+        return new ModelAndView("userprofile","","");
+    }
+
 
     @RequestMapping("/register")
     //the string method returns the jsp page that we want to show
@@ -39,10 +73,11 @@ public class HomeController {
 
     @RequestMapping("/itemsadmin")
     public ModelAndView itemsAdmin() {
-
         ArrayList<ItemsEntity> itemList = displayItemList();
 
-        return new ModelAndView("itemsadmin", "listItems", itemList);
+
+        return new ModelAndView("itemsadmin","listItems",itemList);
+
 
     }
     private Session getSession() {
@@ -62,15 +97,12 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/userprofile")
+    @RequestMapping("/registerNewUser")
     public String addNewUser(Model model, @RequestParam("firstName") String fname, @RequestParam("lastName") String lname, @RequestParam("favoriteCoffee")String favCoffee,
                              @RequestParam("address") String address, @RequestParam("city") String city, @RequestParam("state") String state,
                              @RequestParam("zip") String zip, @RequestParam("email") String email, @RequestParam("password") String password) {
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sf = cfg.buildSessionFactory();
-        Session s = sf.openSession();
-        Transaction tx = s.beginTransaction();
+        Session s = getSession();
 
         UsersEntity newUser = new UsersEntity();
         //add values to the jsp using the model and add Attribute method
@@ -81,10 +113,10 @@ public class HomeController {
         newUser.setState(state);
         newUser.setZip(zip);
         newUser.setEmail(email);
-        newUser.setPassword(password);
+        newUser.setPassword(PasswordMD5Encrypt.PasswordMD5Encrypt(password));
 
         s.save(newUser);
-        tx.commit();
+        s.beginTransaction().commit();
         s.close();
 
         model.addAttribute("firstName",fname);
@@ -142,7 +174,7 @@ public class HomeController {
                 new ModelAndView("itemsadmin","listItems",itemList);
     }
 
-    private int id;
+
     @RequestMapping("/updateItem")
     public String update(Model model, @RequestParam ("id")int id){
         this.id = id;
@@ -160,7 +192,7 @@ public class HomeController {
     }
 
     @RequestMapping("/update")
-    public ModelAndView updateItem(Model model, @RequestParam("itemName")String itemName,@RequestParam("itemDescription")String itemdescription,
+    public ModelAndView updateItem(@RequestParam("itemName")String itemName,@RequestParam("itemDescription")String itemdescription,
                                    @RequestParam("itemPrice")BigDecimal itemPrice, @RequestParam("itemQuantity")int itemQuantity){
 
         Session s = getSession();

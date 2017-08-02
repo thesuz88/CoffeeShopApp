@@ -18,7 +18,7 @@
 <h3>Please fill out all fields to continue</h3>
 <p>
     <a href="/">Back to homepage</a>
-<form name="userForm" method="post" onsubmit="return validateForm()" action="userprofile">
+<form name="userForm" method="post" onsubmit="return validateForm()" action="registerNewUser">
     <fieldset name="customerName">
         <legend>Name</legend>
         <label>First Name:</label><input name="firstName"><span class="invalid"></span>

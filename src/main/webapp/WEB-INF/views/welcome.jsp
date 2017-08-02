@@ -16,12 +16,20 @@
 
 <h1>Welcome to GC COFFEE!</h1>
 
-    <p>
-        Register as a customer
-    <form action="register">
-        <button class="register">Register</button>
-    </form>
-    </p>
+    <table>
+        <tr>
+            <td>
+                <form action="register">
+                    <button class="register">Register</button>
+                </form>
+            </td>
+            <td>
+                <form action="login">
+                    <button class="login">Login</button>
+                </form>
+            </td>
+        </tr>
+    </table>
 
 <div>
     <p>
@@ -61,7 +69,7 @@
 <p>
 
 <form action="itemsadmin">
-    <button>Admin Login</button>
+    <button class="adminLogin">Admin Login</button>
 </form>
 </p>
 <script src="\webresources\coffeelist.js"></script>

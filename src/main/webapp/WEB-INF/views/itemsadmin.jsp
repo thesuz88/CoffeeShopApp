@@ -13,10 +13,6 @@
 </head>
 <body>
 <h1>Items</h1>
-<p>
-<a href="/">Back to homepage</a>
-<br>
-</p>
 <table border="1">
     <tr>
         <th>Item ID</th>
@@ -26,7 +22,7 @@
         <th>Item Quantity</th>
 
     </tr>
-    <c:forEach items="${listItems}" var="items">
+        <c:forEach items="${listItems}" var="items">
         <tr>
             <td>${items.itemsId}</td>
             <td>${items.itemName}</td>
@@ -34,9 +30,9 @@
             <td>${items.price}</td>
             <td>${items.quantity}</td>
             <td>
-               <a href="updateItem?id=${items.itemsId}">
+                <a href="updateItem?id=${items.itemsId}">
                     <button value="Edit Item">Edit</button>
-               </a>
+                </a>
             </td>
             <td>
                 <a href="delete?id=${items.itemsId}" onclick="areYouSure()">
@@ -44,8 +40,13 @@
                 </a>
             </td>
         </tr>
-    </c:forEach>
+        </c:forEach>
 </table>
+
+<p>
+<a href="/">Back to homepage</a>
+<br>
+</p>
 <br>
 <br>
 <form action="getNewItem" class="button">

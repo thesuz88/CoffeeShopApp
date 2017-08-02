@@ -21,13 +21,25 @@ legend {
     font-family: "Calibri", sans-serif;
 }
 
-.register {
+.register{
     pading: 8px 12px;
     background: slategray;
     color: orange;
     font-family: "Calibri", sans-serif;
 }
 
+.login {
+    pading: 8px 12px;
+    background: slategray;
+    color: orange;
+    font-family: "Calibri", sans-serif;
+}
+.adminLogin{
+    pading: 8px 12px;
+    background: slategray;
+    color: orange;
+    font-family: "Calibri", sans-serif;
+}
 #checkout {
     padding: 10px 40px;
     background-color: slategray;
